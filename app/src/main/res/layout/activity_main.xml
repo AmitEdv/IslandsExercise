@@ -8,10 +8,45 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/activityBackground"
     tools:context="com.example.amit.islandsexerciseapp.MainActivity">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/board_size_input_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/title_bottom_margin"
+            style="@style/text_title"
+            android:text="@string/board_size_input_title"
+            />
+
+        <EditText
+            android:id="@+id/board_size_input_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/board_size_input_tv"
+            style="@style/edit_text"
+            android:hint="@string/board_size_input_hint"
+            android:inputType="text"
+            />
+        
+        <Button
+            android:id="@+id/randomize_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/board_size_input_et"
+            style="@style/button"
+            android:text="@string/randomize_btn"
+            android:onClick="onClickedRandomizeButton"
+            />
+    </RelativeLayout>
 </RelativeLayout>

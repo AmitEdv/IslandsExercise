@@ -1,3 +1,10 @@
 <resources>
+    <!--General-->
     <string name="app_name">IslandsExerciseApp</string>
+
+    <!--MainActivity-->
+    <string name="board_size_input_title">Please enter bitmap size:</string>
+    <string name="board_size_input_hint">Bitmap size: n, m</string>
+    <string name="randomize_btn">RANDOMIZE</string>
+
 </resources>

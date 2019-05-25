@@ -28,6 +28,9 @@ public class IslandsBoard {
         this.mNumOfCols = num_of_columns;
     }
 
+    /*package*/ int getNumOfRows() { return mNumOfRows; }
+    /*package*/ int getNumOfColumns() { return mNumOfCols; }
+
     /*package*/ void populateBoardWithRandomValues() {
         Random rand = new Random();
         rand.setSeed(System.currentTimeMillis());
@@ -72,8 +75,8 @@ public class IslandsBoard {
 
     private void BFS(boolean[][] processed, int row, int col) {
         // create an empty queue and enqueue source node
-        Queue<Pair> q = new ArrayDeque<>();
-        q.add(new Pair(row, col));
+        Queue<RowColumnPair> q = new ArrayDeque<>();
+        q.add(new RowColumnPair(row, col));
 
         // mark source node as processed
         processed[row][col] = true;
@@ -82,8 +85,8 @@ public class IslandsBoard {
         while (!q.isEmpty())
         {
             // pop front node from queue and process it
-            int x = q.peek().x;
-            int y = q.peek().y;
+            int x = q.peek().getRow();
+            int y = q.peek().getColumn();
             q.poll();
 
             // check for all 8 possible movements from current cell
@@ -94,7 +97,7 @@ public class IslandsBoard {
                     // skip if location is invalid or it is already
                     // processed or consists of water
                     processed[x + ADJACENT_ROWS[k]][y + ADJACENT_COLS[k]] = true;
-                    q.add(new Pair(x + ADJACENT_ROWS[k], y + ADJACENT_COLS[k]));
+                    q.add(new RowColumnPair(x + ADJACENT_ROWS[k], y + ADJACENT_COLS[k]));
                 }
             }
         }
@@ -104,14 +107,5 @@ public class IslandsBoard {
         return ((row >= 0) && (row < processed.length)
                 && (col >= 0) && (col < processed[0].length)
                 && (mBoard[row][col] == 1 && !processed[row][col]));
-    }
-
-    static class Pair {
-        int x, y;
-
-        public Pair(int x, int y) {
-            this.x = x;
-            this.y = y;
-        }
     }
 }
