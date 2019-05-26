@@ -3,6 +3,8 @@ package com.example.amit.islandsexerciseapp;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Created by Amit on 25/05/2019.
  */
@@ -24,6 +26,10 @@ import android.util.Log;
 
     /*package*/ int getBoardNumOfColumns() {
         return (mBoard == null ? 0 : mBoard.getNumOfColumns());
+    }
+
+    /*package*/ ArrayList<Integer> getBoardAsArray() {
+        return (mBoard == null ? new ArrayList<Integer>() : mBoard.toArray());
     }
 
     /*package*/ void resetBoardDataAndSize(RowColumnPair boardRequiredSize) throws Exception{

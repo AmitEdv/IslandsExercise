@@ -6,5 +6,6 @@
 
     <color name="activityBackground">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="bright_blue">#319bed</color>
 </resources>

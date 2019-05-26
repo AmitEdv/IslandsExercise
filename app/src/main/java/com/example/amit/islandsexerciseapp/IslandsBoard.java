@@ -15,6 +15,8 @@ import java.util.Random;
 public class IslandsBoard {
     private static final String TAG = "IslandsBoard";
 
+    /*package*/ static final Integer CELL_VALUE_WATER = 0;
+    /*package*/ static final Integer CELL_VALUE_PART_OF_ISLAND = 1;
     private static final int[] ADJACENT_ROWS = { -1, -1, -1, 0, 1, 0, 1, 1 };
     private static final int[] ADJACENT_COLS = { -1, 1, 0, -1, -1, 1, 0, 1 };
 
@@ -30,6 +32,17 @@ public class IslandsBoard {
 
     /*package*/ int getNumOfRows() { return mNumOfRows; }
     /*package*/ int getNumOfColumns() { return mNumOfCols; }
+
+    /*package*/ ArrayList<Integer> toArray() {
+        ArrayList<Integer> boardArray = new ArrayList<>();
+        for (int i = 0; i < mNumOfRows; i++) {
+            for (int j = 0; j < mNumOfCols; j++) {
+                boardArray.add(mBoard[i][j]);
+            }
+        }
+
+        return boardArray;
+    }
 
     /*package*/ void populateBoardWithRandomValues() {
         Random rand = new Random();

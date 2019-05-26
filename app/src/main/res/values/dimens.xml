@@ -5,4 +5,12 @@
 
     <!-- Main Activity -->
     <dimen name="title_bottom_margin">20dp</dimen>
+
+    <!-- Board Display Activity -->
+    <dimen name="board_min_margin_top">30dp</dimen>
+    <dimen name="board_min_margin_bottom">30dp</dimen>
+    <dimen name="board_min_margin_start">20dp</dimen>
+    <dimen name="board_min_margin_end">20dp</dimen>
+    <dimen name="board_inner_borders_thickness">1dp</dimen>
+    <dimen name="board_outline_borders_thickness">1dp</dimen>
 </resources>
