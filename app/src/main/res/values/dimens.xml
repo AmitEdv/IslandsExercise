@@ -13,4 +13,8 @@
     <dimen name="board_min_margin_end">20dp</dimen>
     <dimen name="board_inner_borders_thickness">1dp</dimen>
     <dimen name="board_outline_borders_thickness">1dp</dimen>
+    <dimen name="cell_height">15dp</dimen>
+    <dimen name="cell_width">15dp</dimen>
+
+
 </resources>

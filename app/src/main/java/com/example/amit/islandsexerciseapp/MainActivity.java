@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.*;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.lang.annotation.Retention;
@@ -37,7 +38,18 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
     }
 
-    void onClickedRandomizeButton(View view) {
+    /*package*/  void initViewMembers() {
+        mBoardSizeInputET = (EditText) findViewById(R.id.board_size_input_et);
+        Button randomizeBtn = (Button)  findViewById(R.id.randomize_btn);
+        randomizeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickedRandomizeButton();
+            }
+        });
+    }
+
+    /*package*/ void onClickedRandomizeButton() {
         Log.v(TAG, "onClickedRandomizeButton() called");
         RowColumnPair pair = getBoardSizeInput();
 
@@ -50,32 +62,28 @@ public class MainActivity extends AppCompatActivity {
         startBoardDisplayActivity();
     }
 
-    /*package*/  void initViewMembers() {
-        mBoardSizeInputET = (EditText) findViewById(R.id.board_size_input_et);
-    }
-
     /*package*/ RowColumnPair getBoardSizeInput() {
         Log.v(TAG, "getBoardSizeInput() called");
-        int num_of_rows = 0;
-        int num_of_cols = 0;
+        int numOfRows = 0;
+        int numOfCols = 0;
 
         String[] input_tokens = mBoardSizeInputET.getText().toString().split(", ");
         if (input_tokens.length != NUM_OF_INPUT_PARAMS) {
             // TODO: 25/05/2019 Handle input failure
             Log.e(TAG, "getBoardSizeInput() input format is incorrect. Required: n, m");
-            return new RowColumnPair(num_of_rows,num_of_cols);
+            return new RowColumnPair(numOfRows,numOfCols);
         }
 
         try {
-            num_of_rows = Integer.valueOf(input_tokens[BOARD_SIZE_INPUT_INDEX_ROWS]);
-            num_of_cols = Integer.valueOf(input_tokens[BOARD_SIZE_INPUT_INDEX_COLUMNS]);
+            numOfRows = Integer.valueOf(input_tokens[BOARD_SIZE_INPUT_INDEX_ROWS]);
+            numOfCols = Integer.valueOf(input_tokens[BOARD_SIZE_INPUT_INDEX_COLUMNS]);
         } catch (NumberFormatException exception) {
             // TODO: 25/05/2019 Handle input failure
             Log.e(TAG, "getBoardSizeInput() input params should be integers. Required: n, m");
         }
 
-        Log.v(TAG, "getBoardSizeInput() rows input = " + num_of_rows + " cols input = " + num_of_cols);
-        return new RowColumnPair(num_of_rows,num_of_cols);
+        Log.v(TAG, "getBoardSizeInput() rows input = " + numOfRows + " cols input = " + numOfCols);
+        return new RowColumnPair(numOfRows,numOfCols);
     }
 
     private void startBoardDisplayActivity() {

@@ -19,6 +19,8 @@ class BoardGridAdapter extends BaseAdapter {
 
     private final Context mContext;
     private final ArrayList<Integer> mBoardCells;
+    private View mCellView;
+    private LinearLayout mCellLayout;
 
     BoardGridAdapter(Context context, ArrayList<Integer> cells) {
         mContext = context;
@@ -42,17 +44,18 @@ class BoardGridAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        mCellView = inflater.inflate(R.layout.item_board_cell_water, null);
+        mCellLayout = (LinearLayout) mCellView.findViewById(R.id.item_board_cell_ll);
+
         Integer cell = mBoardCells.get(position);
-        LinearLayout cellView = new LinearLayout(mContext);
-        cellView.setMinimumHeight(15);
-        cellView.setMinimumWidth(15);
         @ColorInt int cellColor = Color.WHITE; // cell == IslandsBoard.CELL_VALUE_WATER
         if (cell == IslandsBoard.CELL_VALUE_PART_OF_ISLAND) {
             cellColor = Color.BLACK;
         }
 
-        cellView.setBackgroundColor(cellColor);
-        return cellView;
+        mCellLayout.setBackgroundColor(cellColor);
+        return mCellView;
     }
 
 }
