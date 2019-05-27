@@ -4,6 +4,34 @@
     android:background="@color/activityBackground"
     >
 
+    <com.example.amit.islandsexerciseapp.BoardView
+        android:id="@+id/board_bv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/solution_txt"
+        />
+
+    <TextView
+        android:id="@+id/solution_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/restart_btn"
+        android:textSize="@dimen/solution_text_size"
+        android:visibility="visible"
+        />
+
+    <Button
+        android:id="@+id/solve_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="@string/solve_action"
+        style="@style/button"
+        android:visibility="visible"
+        />
 
     <Button
         android:id="@+id/restart_btn"
@@ -12,8 +40,9 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:text="@string/restart_btn"
+        android:text="@string/restart_action"
         style="@style/button"
+        android:visibility="invisible"
         />
 
 </RelativeLayout>

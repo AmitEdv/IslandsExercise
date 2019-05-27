@@ -34,7 +34,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/board_size_input_tv"
             style="@style/edit_text"
-            android:hint="@string/board_size_input_hint"
+            android:hint="@string/board_size_input_format"
             android:inputType="text"
             />
         
@@ -45,7 +45,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/board_size_input_et"
             style="@style/button"
-            android:text="@string/randomize_btn"
+            android:text="@string/randomize_action"
             />
     </RelativeLayout>
 </RelativeLayout>

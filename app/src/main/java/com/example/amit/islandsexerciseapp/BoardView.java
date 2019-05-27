@@ -4,25 +4,27 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.View;
 
 /**
  * Created by Amit on 27/05/2019.
  */
 
-/*package*/ class BoardView extends View {
+ public class BoardView extends View {
     static final int MIN_MARGIN_START_END = 30;
     static final int MIN_MARGIN_TOP_BOTTOM = 30;
+    static final int BORDERS_STROKE_WIDTH = 8;
 
     int mNumOfRows = 0;
     int mNumOfCols = 0;
     Paint mBordersPaint = new Paint();
 
-    /*package*/ BoardView(Context context) {
-        super(context);
+    public BoardView(Context context, AttributeSet attributeSet) {
+        super(context, attributeSet);
 
         mBordersPaint.setColor(Color.BLACK);
-        mBordersPaint.setStrokeWidth(8);
+        mBordersPaint.setStrokeWidth(BORDERS_STROKE_WIDTH);
     }
 
     @Override
