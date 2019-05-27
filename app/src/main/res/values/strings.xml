@@ -7,4 +7,6 @@
     <string name="board_size_input_hint">Bitmap size: n, m</string>
     <string name="randomize_btn">RANDOMIZE</string>
 
+    <!--Board Display Activity-->
+    <string name="restart_btn">&gt; RESTART</string>
 </resources>

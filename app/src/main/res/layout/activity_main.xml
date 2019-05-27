@@ -46,7 +46,6 @@
             android:layout_below="@+id/board_size_input_et"
             style="@style/button"
             android:text="@string/randomize_btn"
-            android:onClick="onClickedRandomizeButton"
             />
     </RelativeLayout>
 </RelativeLayout>
