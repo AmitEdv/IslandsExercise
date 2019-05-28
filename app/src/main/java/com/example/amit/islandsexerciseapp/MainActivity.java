@@ -1,18 +1,12 @@
 package com.example.amit.islandsexerciseapp;
 
 import android.content.Intent;
-import android.support.annotation.IntDef;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.*;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.lang.annotation.Retention;
-
-import static java.lang.annotation.RetentionPolicy.SOURCE;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";

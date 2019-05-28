@@ -35,8 +35,9 @@ public class BoardDisplayActivity extends AppCompatActivity {
 
     private void initViewMembers() {
         BoardView boardView = (BoardView) findViewById(R.id.board_bv);
-        boardView.setNumColumns(mBoardManager.getBoardNumOfColumns());
-        boardView.setNumRows(mBoardManager.getBoardNumOfRows());
+        boardView.setMatrix(mBoardManager.getBoard(),
+                mBoardManager.getBoardNumOfRows(),
+                mBoardManager.getBoardNumOfColumns());
 
         mSolveBtn = (Button) findViewById(R.id.solve_btn);
         mSolveBtn.setOnClickListener(new View.OnClickListener() {

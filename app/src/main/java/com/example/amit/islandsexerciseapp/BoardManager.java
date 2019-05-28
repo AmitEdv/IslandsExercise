@@ -28,8 +28,8 @@ import java.util.ArrayList;
         return (mBoard == null ? 0 : mBoard.getNumOfColumns());
     }
 
-    /*package*/ ArrayList<Integer> getBoardAsArray() {
-        return (mBoard == null ? new ArrayList<Integer>() : mBoard.toArray());
+    /*package*/ int[][] getBoard() {
+        return (mBoard == null ? new int[0][0] : mBoard.getValues());
     }
 
     /*package*/ void resetBoardDataAndSize(RowColumnPair boardRequiredSize) throws Exception{

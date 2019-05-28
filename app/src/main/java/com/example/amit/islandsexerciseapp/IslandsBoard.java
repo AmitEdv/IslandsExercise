@@ -33,15 +33,15 @@ public class IslandsBoard {
     /*package*/ int getNumOfRows() { return mNumOfRows; }
     /*package*/ int getNumOfColumns() { return mNumOfCols; }
 
-    /*package*/ ArrayList<Integer> toArray() {
-        ArrayList<Integer> boardArray = new ArrayList<>();
+    /*package*/ int[][] getValues() {
+        int[][] readBoardCopy = new int[mNumOfRows][mNumOfCols];
         for (int i = 0; i < mNumOfRows; i++) {
             for (int j = 0; j < mNumOfCols; j++) {
-                boardArray.add(mBoard[i][j]);
+                readBoardCopy[i][j] = mBoard[i][j];
             }
         }
 
-        return boardArray;
+        return readBoardCopy;
     }
 
     /*package*/ void populateBoardWithRandomValues() {

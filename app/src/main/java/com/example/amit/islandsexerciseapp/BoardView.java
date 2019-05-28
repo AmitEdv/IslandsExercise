@@ -7,6 +7,8 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.ArrayList;
+
 /**
  * Created by Amit on 27/05/2019.
  */
@@ -15,10 +17,17 @@ import android.view.View;
     static final int MIN_MARGIN_START_END = 30;
     static final int MIN_MARGIN_TOP_BOTTOM = 30;
     static final int BORDERS_STROKE_WIDTH = 8;
+    static final int CELL_VALUE_COLOR_BLACK = 1;
 
-    int mNumOfRows = 0;
-    int mNumOfCols = 0;
-    Paint mBordersPaint = new Paint();
+    private int[][] mboardMatrix;
+    private int mNumOfRows = 0;
+    private int mNumOfCols = 0;
+    private int mGridSpacing = 0;
+    private int mMarginOffsetStartEnd = 0;
+    private int mMarginOffsetTopBottom = 0;
+    private boolean mIsColorful = false;
+    private Paint mBordersPaint = new Paint();
+    private Paint mCellsPaint = new Paint();
 
     public BoardView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -34,6 +43,18 @@ import android.view.View;
             return;
         }
 
+        paintGrid(canvas);
+        // TODO: 28/05/2019  This function should still be tested
+        //paintCells(canvas);
+    }
+
+    /*package*/ void setMatrix(int[][] boardMatrix, int numOfRows, int numOfCols) {
+        mboardMatrix = boardMatrix;
+        mNumOfRows = numOfRows;
+        mNumOfCols = numOfCols;
+    }
+
+    private void paintGrid(Canvas canvas) {
         float startX;
         float stopX;
         float startY;
@@ -42,21 +63,20 @@ import android.view.View;
         int canvasWidth = canvas.getWidth() - (2 * MIN_MARGIN_START_END);
         int canvasHeight = canvas.getHeight() - (2 * MIN_MARGIN_TOP_BOTTOM);
 
-        int gridSpacing;
         int maxGridSpacingHorizontal = canvasWidth/mNumOfCols;
         int maxGridSpacingVertical = canvasHeight/mNumOfRows;
-        gridSpacing = Math.min(maxGridSpacingHorizontal, maxGridSpacingVertical);
-        int boardTotalSizeHorizontal = mNumOfCols * gridSpacing;
-        int boardTotalSizeVertical = mNumOfRows * gridSpacing;
+        mGridSpacing = Math.min(maxGridSpacingHorizontal, maxGridSpacingVertical);
+        int boardTotalSizeHorizontal = mNumOfCols * mGridSpacing;
+        int boardTotalSizeVertical = mNumOfRows * mGridSpacing;
 
-        int marginOffsetStartEnd = MIN_MARGIN_START_END + (canvasWidth - boardTotalSizeHorizontal)/2;
-        int marginOffsetTopBottom = MIN_MARGIN_TOP_BOTTOM + (canvasHeight - boardTotalSizeVertical)/2;
+        mMarginOffsetStartEnd = MIN_MARGIN_START_END + (canvasWidth - boardTotalSizeHorizontal)/2;
+        mMarginOffsetTopBottom = MIN_MARGIN_TOP_BOTTOM + (canvasHeight - boardTotalSizeVertical)/2;
 
         //Vertical Grid-lines
         for (int i = 0; i <= mNumOfCols; i++) {
 
-            startX = marginOffsetStartEnd + (i * gridSpacing);
-            startY = marginOffsetTopBottom;
+            startX = mMarginOffsetStartEnd + (i * mGridSpacing);
+            startY = mMarginOffsetTopBottom;
 
             stopX = startX;
             stopY = startY + boardTotalSizeVertical;
@@ -67,8 +87,8 @@ import android.view.View;
         //Horizontal Grid-lines
         for (int i = 0; i <= mNumOfRows; i++) {
 
-            startX = marginOffsetStartEnd;
-            startY = marginOffsetTopBottom + (i * gridSpacing);
+            startX = mMarginOffsetStartEnd;
+            startY = mMarginOffsetTopBottom + (i * mGridSpacing);
 
             stopX = startX + boardTotalSizeHorizontal;
             stopY = startY;
@@ -77,11 +97,27 @@ import android.view.View;
         }
     }
 
-    /*package*/ void setNumRows(int rows) {
-        mNumOfRows = rows;
+    private void paintCells(Canvas canvas) {
+        // TODO: 28/05/2019 This function should still be tested
+        mCellsPaint.setColor(Color.BLACK);
+
+        int cellWidth = mGridSpacing;
+        int cellHeight = mGridSpacing;
+
+        for (int row = 0; row <= mNumOfRows; row++) {
+            for (int col = 0; col <= mNumOfCols; col++) {
+                if (isCellColored(row, col)) {
+                    canvas.drawRect(row * cellWidth, col * cellHeight,
+                            (row + 1) * cellWidth, (col + 1) * cellHeight,
+                            mCellsPaint);
+                }
+            }
+        }
     }
 
-    /*package*/ void setNumColumns(int cols) {
-        mNumOfCols = cols;
+    private boolean isCellColored(int row, int col) {
+        // TODO: 28/05/2019 determine the color of the cell according to its value
+        // use intdef
+        return (mboardMatrix[row][col] == CELL_VALUE_COLOR_BLACK);
     }
 }
